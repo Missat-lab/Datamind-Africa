@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATAMIND AFRICA - Intelligence Artificielle au Service du Développement Africain</title>
+    <style>
+        :root {
+            --primary-blue: #0A2463;
+            --growth-green: #00A896;
+            --energy-orange: #FF6B35;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text span {
+            color: var(--growth-green);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--energy-orange);
+        }
+        
+        .lang-switcher {
+            display: flex;
+            margin-left: 20px;
+        }
+        
+        .lang-switcher button {
+            background: transparent;
+            border: 1px solid var(--light-text);
+            color: var(--light-text);
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        .lang-switcher button.active {
+            background: var(--energy-orange);
+            border-color: var(--energy-orange);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('placeholder-hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--energy-orange);
+            color: var(--light-text);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e05a2a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-text);
+            border: 2px solid var(--light-text);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light-text);
+            color: var(--primary-blue);
+        }
+        
+        /* Sections générales */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* Notre Mission */
+        .mission {
+            background-color: var(--light-bg);
+        }
+        
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .mission-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .mission-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--light-text);
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--growth-green);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Solutions Sectorielles */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            background: var(--light-text);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .solution-icon {
+            height: 80px;
+            background-color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            font-size: 2rem;
+        }
+        
+        .solution-content {
+            padding: 25px;
+        }
+        
+        .solution-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .solution-challenge {
+            color: var(--energy-orange);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .solution-result {
+            background-color: var(--light-bg);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        /* Plateforme CentrAI */
+        .platform {
+            background-color: var(--light-bg);
+        }
+        
+        .platform-demo {
+            background: var(--light-text);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .demo-header {
+            background: var(--primary-blue);
+            color: var(--light-text);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .demo-content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .demo-map {
+            background: #e9ecef;
+            height: 300px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .demo-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .stat-box {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .stat-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* Impact */
+        .impact-timer {
+            background: var(--primary-blue);
+            color: var(--light-text);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .impact-timer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .timer-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--growth-green);
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: var(--light-text);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: """;
+            font-size: 4rem;
+            color: var(--growth-green);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        /* Calculateur d'Impact */
+        .calculator {
+            background: var(--primary-blue);
+            color: var(--light-text);
+            padding: 60px 0;
+        }
+        
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .calculator-form {
+            background: var(--light-text);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            color: var(--dark-text);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .calculator-result {
+            background: var(--growth-green);
+            color: var(--light-text);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: var(--light-text);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--growth-green);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--energy-orange);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .mission-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Animation pour le timer */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated-count {
+            animation: countUp 1s ease-out;
+        }
+        
+        /* Style pour la direction RTL (arabe) */
+        html[dir="rtl"] .header-container,
+        html[dir="rtl"] nav ul,
+        html[dir="rtl"] .mission-content,
+        html[dir="rtl"] .demo-content,
+        html[dir="rtl"] .footer-content {
+            direction: rtl;
+        }
+        
+        html[dir="rtl"] .logo {
+            flex-direction: row-reverse;
+        }
+        
+        html[dir="rtl"] .logo img {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        html[dir="rtl"] nav ul li {
+            margin-left: 0;
+            margin-right: 25px;
+        }
+        
+        html[dir="rtl"] .lang-switcher {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        html[dir="rtl"] .lang-switcher button {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTgiIGZpbGw9IiMwQTI0NjMiIHN0cm9rZT0iIzAwQTg5NiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xMiAxNkwyMCA4TDI4IDE2IiBzdHJva2U9IiNGRjZCMzUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMiAyNEwyMCAzMkwyOCAyNCIgc3Ryb2tlPSIjRkY2QjM1IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" alt="DATAMIND AFRICA Logo">
+                <div class="logo-text">DATAMIND <span>AFRICA</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#mission">Notre Mission</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#platform">Plateforme</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="lang-switcher">
+                <button class="active" data-lang="fr">FR</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="ar">AR</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 data-lang-key="hero-title">L'intelligence Artificielle au Service du Développement Africain</h1>
+            <p data-lang-key="hero-subtitle">Des solutions concrètes pour la santé, l'éducation, la sécurité et l'entreprise</p>
+            <div class="cta-buttons">
+                <a href="#platform" class="btn btn-primary" data-lang-key="demo-btn">Voir la démo</a>
+                <a href="#contact" class="btn btn-secondary" data-lang-key="contact-btn">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notre Mission -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-key="mission-title">Notre Mission</h2>
+                <p data-lang-key="mission-subtitle">Transformer la data en actions qui sauvent des vies</p>
+            </div>
+            
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h3 data-lang-key="mission-problem">Chaque jour, des vies sont perdues par manque de bonnes décisions</h3>
+                    <p data-lang-key="mission-solution">Nous transformons la data en actions qui sauvent grâce à l'intelligence artificielle et la data science adaptées aux défis africains.</p>
+                    
+                    <div class="mission-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-text" data-lang-key="stat-1">Réduction de la mortalité maternelle</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">+15%</div>
+                            <div class="stat-text" data-lang-key="stat-2">Rétention scolaire</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-text" data-lang-key="stat-3">Efficacité administrative</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mission-visual">
+                    <div class="placeholder-image" style="background: #e9ecef; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Infographie: Impact DATAMIND AFRICA
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Sectorielles -->
+    <section id="solutions">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-key="solutions-title">Solutions Sectorielles</h2>
+                <p data-lang-key="solutions-subtitle">Des solutions sur mesure pour répondre aux défis spécifiques de l'Afrique</p>
+            </div>
+            
+            <div class="solutions-grid">
+                <!-- Santé Intelligente -->
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3 data-lang-key="health-title">Santé Intelligente</h3>
+                        <div class="solution-challenge" data-lang-key="health-challenge">Rupture de stock de médicaments</div>
+                        <p data-lang-key="health-solution">SMS-Vie : prédiction des stocks et optimisation des approvisionnements</p>
+                        <div class="solution-result" data-lang-key="health-result">Plus aucune rupture dans les districts pilotes</div>
+                    </div>
+                </div>
+                
+                <!-- Sécurité Prédictive -->
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3 data-lang-key="security-title">Sécurité Prédictive</h3>
+                        <div class="solution-challenge" data-lang-key="security-challenge">Difficulté à anticiper les crises</div>
+                        <p data-lang-key="security-solution">Sentinel CEMAC : analyse prédictive des risques sécuritaires</p>
+                        <div class="solution-result" data-lang-key="security-result">Réduction de 45% des incidents dans les zones couvertes</div>
+                    </div>
+                </div>
+                
+                <!-- Éducation Adaptive -->
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3 data-lang-key="education-title">Éducation Adaptive</h3>
+                        <div class="solution-challenge" data-lang-key="education-challenge">Décrochage scolaire massif</div>
+                        <p data-lang-key="education-solution">EduPredict : identification précoce des élèves en difficulté</p>
+                        <div class="solution-result" data-lang-key="education-result">+15% de rétention scolaire dans les établissements pilotes</div>
+                    </div>
+                </div>
+                
+                <!-- Administration 4.0 -->
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3 data-lang-key="gov-title">Administration 4.0</h3>
+                        <div class="solution-challenge" data-lang-key="gov-challenge">Lenteur des services publics</div>
+                        <p data-lang-key="gov-solution">GovFlow : optimisation des processus administratifs</p>
+                        <div class="solution-result" data-lang-key="gov-result">40% d'efficacité administrative en plus</div>
+                    </div>
+                </div>
+                
+                <!-- Entreprises Performantes -->
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3 data-lang-key="business-title">Entreprises Performantes</h3>
+                        <div class="solution-challenge" data-lang-key="business-challenge">Manque d'outils d'optimisation</div>
+                        <p data-lang-key="business-solution">Data-Mine & Agro : solutions pour les secteurs minier et agricole</p>
+                        <div class="solution-result" data-lang-key="business-result">Augmentation de 25% de la productivité</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plateforme CentrAI -->
+    <section class="platform" id="platform">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-key="platform-title">Plateforme CentrAI</h2>
+                <p data-lang-key="platform-subtitle">Interface unifiée pour accéder à tous nos modules d'intelligence artificielle</p>
+            </div>
+            
+            <div class="platform-demo">
+                <div class="demo-header">
+                    <h3 data-lang-key="demo-title">Tableau de bord CentrAI</h3>
+                    <button class="btn btn-primary" data-lang-key="try-demo">Essayez la démo</button>
+                </div>
+                
+                <div class="demo-content">
+                    <div class="demo-map">
+                        Carte Afrique avec points chauds sécurité
+                    </div>
+                    
+                    <div class="demo-stats">
+                        <div class="stat-box">
+                            <h4 data-lang-key="health-stats">Santé</h4>
+                            <div class="stat-value">87%</div>
+                            <div data-lang-key="stock-availability">Disponibilité des médicaments</div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <h4 data-lang-key="security-stats">Sécurité</h4>
+                            <div class="stat-value">12</div>
+                            <div data-lang-key="alerts-today">Alertes aujourd'hui</div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <h4 data-lang-key="education-stats">Éducation</h4>
+                            <div class="stat-value">243</div>
+                            <div data-lang-key="students-monitored">Élèves suivis</div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <h4 data-lang-key="gov-stats">Administration</h4>
+                            <div class="stat-value">68%</div>
+                            <div data-lang-key="process-optimized">Processus optimisés</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section id="impact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-key="impact-title">Impact & Résultats</h2>
+                <p data-lang-key="impact-subtitle">Des résultats concrets qui transforment des vies</p>
+            </div>
+            
+            <div class="impact-timer">
+                <h3 data-lang-key="lives-saved">Vies sauvées ce mois-ci</h3>
+                <div class="timer-value" id="livesCounter">27</div>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-lang-key="testimonial-1">
+                        "Grâce à SMS-Vie, nous anticipons les pénuries de médicaments et sauvons des vies. Une révolution pour notre système de santé."
+                    </div>
+                    <div class="testimonial-author" data-lang-key="testimonial-1-author">Directeur d'hôpital, RCA</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-lang-key="testimonial-2">
+                        "EduPredict m'aide à identifier les élèves en difficulté avant qu'il ne soit trop tard. Nous avons réduit le décrochage de 18%."
+                    </div>
+                    <div class="testimonial-author" data-lang-key="testimonial-2-author">Enseignant, RCA</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-lang-key="testimonial-3">
+                        "Sentinel CEMAC nous a permis de prévenir 3 crises majeures cette année. La data au service de la paix."
+                    </div>
+                    <div class="testimonial-author" data-lang-key="testimonial-3-author">Responsable sécurité, CEMAC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculateur d'Impact -->
+    <section class="calculator">
+        <div class="container calculator-container">
+            <div class="section-title">
+                <h2 data-lang-key="calculator-title">Calculateur d'Impact</h2>
+                <p data-lang-key="calculator-subtitle">Découvrez ce que DATAMIND peut faire pour votre organisation</p>
+            </div>
+            
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="organization-type" data-lang-key="org-type">Je suis</label>
+                    <select id="organization-type">
+                        <option value="health" data-lang-key="org-health">Ministère de la Santé</option>
+                        <option value="education" data-lang-key="org-education">Ministère de l'Éducation</option>
+                        <option value="security" data-lang-key="org-security">Agence de Sécurité</option>
+                        <option value="gov" data-lang-key="org-gov">Administration Publique</option>
+                        <option value="business" data-lang-key="org-business">Entreprise</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="scale" data-lang-key="org-scale">Échelle d'opération</label>
+                    <input type="range" id="scale" min="1" max="10" value="5">
+                    <div id="scale-value">5 districts sanitaires</div>
+                </div>
+                
+                <button class="btn btn-primary" id="calculateBtn" data-lang-key="calculate-btn">Calculer l'impact</button>
+                
+                <div class="calculator-result" id="calculatorResult">
+                    <h3 data-lang-key="potential-impact">Impact potentiel</h3>
+                    <div id="impactResult">Économie potentielle : 45,000 €/an | 120 vies sauvées</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-key="contact-title">Contactez-nous</h2>
+                <p data-lang-key="contact-subtitle">Prêt à transformer vos défis en opportunités?</p>
+            </div>
+            
+            <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div class="contact-info">
+                    <h3 data-lang-key="get-in-touch">Prenez contact avec notre équipe</h3>
+                    <p data-lang-key="contact-desc">Notre équipe d'experts est à votre disposition pour discuter de vos besoins spécifiques et vous présenter nos solutions sur mesure.</p>
+                    
+                    <div class="contact-methods" style="margin-top: 30px;">
+                        <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <i class="fas fa-envelope" style="color: var(--energy-orange); margin-right: 15px;"></i>
+                            <span>contact@datamind-africa.com</span>
+                        </div>
+                        <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <i class="fas fa-phone" style="color: var(--energy-orange); margin-right: 15px;"></i>
+                            <span>+236 XX XX XX XX</span>
+                        </div>
+                        <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--energy-orange); margin-right: 15px;"></i>
+                            <span data-lang-key="location">Bangui, République Centrafricaine</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom" required data-lang-key="name-placeholder">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required data-lang-key="email-placeholder">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" data-lang-key="interest-default">Votre domaine d'intérêt</option>
+                                <option value="health" data-lang-key="interest-health">Santé Intelligente</option>
+                                <option value="security" data-lang-key="interest-security">Sécurité Prédictive</option>
+                                <option value="education" data-lang-key="interest-education">Éducation Adaptive</option>
+                                <option value="gov" data-lang-key="interest-gov">Administration 4.0</option>
+                                <option value="business" data-lang-key="interest-business">Entreprises Performantes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Votre message" required data-lang-key="message-placeholder"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-lang-key="send-message">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DATAMIND AFRICA</h3>
+                    <p data-lang-key="footer-desc">L'intelligence artificielle au service du développement africain.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-lang-key="solutions-title">Solutions</h3>
+                    <ul>
+                        <li><a href="#solutions" data-lang-key="health-title">Santé Intelligente</a></li>
+                        <li><a href="#solutions" data-lang-key="security-title">Sécurité Prédictive</a></li>
+                        <li><a href="#solutions" data-lang-key="education-title">Éducation Adaptive</a></li>
+                        <li><a href="#solutions" data-lang-key="gov-title">Administration 4.0</a></li>
+                        <li><a href="#solutions" data-lang-key="business-title">Entreprises Performantes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-lang-key="resources-title">Ressources</h3>
+                    <ul>
+                        <li><a href="#" data-lang-key="resources-case">Études de cas</a></li>
+                        <li><a href="#" data-lang-key="resources-blog">Blog</a></li>
+                        <li><a href="#" data-lang-key="resources-docs">Documentation</a></li>
+                        <li><a href="#" data-lang-key="resources-news">Actualités</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-lang-key="contact-title">Contact</h3>
+                    <ul>
+                        <li><a href="#contact" data-lang-key="contact-us">Contactez-nous</a></li>
+                        <li><a href="#" data-lang-key="careers">Carrières</a></li>
+                        <li><a href="#" data-lang-key="partners">Partenaires</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DATAMIND AFRICA. <span data-lang-key="rights-reserved">Tous droits réservés.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du menu mobile
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Gestion du changement de langue
+        const langButtons = document.querySelectorAll('.lang-switcher button');
+        const langData = {
+            fr: {
+                'hero-title': 'L\'intelligence Artificielle au Service du Développement Africain',
+                'hero-subtitle': 'Des solutions concrètes pour la santé, l\'éducation, la sécurité et l\'entreprise',
+                'demo-btn': 'Voir la démo',
+                'contact-btn': 'Contactez-nous',
+                'mission-title': 'Notre Mission',
+                'mission-subtitle': 'Transformer la data en actions qui sauvent des vies',
+                'mission-problem': 'Chaque jour, des vies sont perdues par manque de bonnes décisions',
+                'mission-solution': 'Nous transformons la data en actions qui sauvent grâce à l\'intelligence artificielle et la data science adaptées aux défis africains.',
+                'stat-1': 'Réduction de la mortalité maternelle',
+                'stat-2': 'Rétention scolaire',
+                'stat-3': 'Efficacité administrative',
+                'solutions-title': 'Solutions Sectorielles',
+                'solutions-subtitle': 'Des solutions sur mesure pour répondre aux défis spécifiques de l\'Afrique',
+                'health-title': 'Santé Intelligente',
+                'health-challenge': 'Rupture de stock de médicaments',
+                'health-solution': 'SMS-Vie : prédiction des stocks et optimisation des approvisionnements',
+                'health-result': 'Plus aucune rupture dans les districts pilotes',
+                'security-title': 'Sécurité Prédictive',
+                'security-challenge': 'Difficulté à anticiper les crises',
+                'security-solution': 'Sentinel CEMAC : analyse prédictive des risques sécuritaires',
+                'security-result': 'Réduction de 45% des incidents dans les zones couvertes',
+                'education-title': 'Éducation Adaptive',
+                'education-challenge': 'Décrochage scolaire massif',
+                'education-solution': 'EduPredict : identification précoce des élèves en difficulté',
+                'education-result': '+15% de rétention scolaire dans les établissements pilotes',
+                'gov-title': 'Administration 4.0',
+                'gov-challenge': 'Lenteur des services publics',
+                'gov-solution': 'GovFlow : optimisation des processus administratifs',
+                'gov-result': '40% d\'efficacité administrative en plus',
+                'business-title': 'Entreprises Performantes',
+                'business-challenge': 'Manque d\'outils d\'optimisation',
+                'business-solution': 'Data-Mine & Agro : solutions pour les secteurs minier et agricole',
+                'business-result': 'Augmentation de 25% de la productivité',
+                'platform-title': 'Plateforme CentrAI',
+                'platform-subtitle': 'Interface unifiée pour accéder à tous nos modules d\'intelligence artificielle',
+                'demo-title': 'Tableau de bord CentrAI',
+                'try-demo': 'Essayez la démo',
+                'health-stats': 'Santé',
+                'stock-availability': 'Disponibilité des médicaments',
+                'security-stats': 'Sécurité',
+                'alerts-today': 'Alertes aujourd\'hui',
+                'education-stats': 'Éducation',
+                'students-monitored': 'Élèves suivis',
+                'gov-stats': 'Administration',
+                'process-optimized': 'Processus optimisés',
+                'impact-title': 'Impact & Résultats',
+                'impact-subtitle': 'Des résultats concrets qui transforment des vies',
+                'lives-saved': 'Vies sauvées ce mois-ci',
+                'testimonial-1': '"Grâce à SMS-Vie, nous anticipons les pénuries de médicaments et sauvons des vies. Une révolution pour notre système de santé."',
+                'testimonial-1-author': 'Directeur d\'hôpital, RCA',
+                'testimonial-2': '"EduPredict m\'aide à identifier les élèves en difficulté avant qu\'il ne soit trop tard. Nous avons réduit le décrochage de 18%."',
+                'testimonial-2-author': 'Enseignant, RCA',
+                'testimonial-3': '"Sentinel CEMAC nous a permis de prévenir 3 crises majeures cette année. La data au service de la paix."',
+                'testimonial-3-author': 'Responsable sécurité, CEMAC',
+                'calculator-title': 'Calculateur d\'Impact',
+                'calculator-subtitle': 'Découvrez ce que DATAMIND peut faire pour votre organisation',
+                'org-type': 'Je suis',
+                'org-health': 'Ministère de la Santé',
+                'org-education': 'Ministère de l\'Éducation',
+                'org-security': 'Agence de Sécurité',
+                'org-gov': 'Administration Publique',
+                'org-business': 'Entreprise',
+                'org-scale': 'Échelle d\'opération',
+                'calculate-btn': 'Calculer l\'impact',
+                'potential-impact': 'Impact potentiel',
+                'contact-title': 'Contactez-nous',
+                'contact-subtitle': 'Prêt à transformer vos défis en opportunités?',
+                'get-in-touch': 'Prenez contact avec notre équipe',
+                'contact-desc': 'Notre équipe d\'experts est à votre disposition pour discuter de vos besoins spécifiques et vous présenter nos solutions sur mesure.',
+                'location': 'Bangui, République Centrafricaine',
+                'name-placeholder': 'Votre nom',
+                'email-placeholder': 'Votre email',
+                'interest-default': 'Votre domaine d\'intérêt',
+                'interest-health': 'Santé Intelligente',
+                'interest-security': 'Sécurité Prédictive',
+                'interest-education': 'Éducation Adaptive',
+                'interest-gov': 'Administration 4.0',
+                'interest-business': 'Entreprises Performantes',
+                'message-placeholder': 'Votre message',
+                'send-message': 'Envoyer le message',
+                'footer-desc': 'L\'intelligence artificielle au service du développement africain.',
+                'resources-title': 'Ressources',
+                'resources-case': 'Études de cas',
+                'resources-blog': 'Blog',
+                'resources-docs': 'Documentation',
+                'resources-news': 'Actualités',
+                'contact-us': 'Contactez-nous',
+                'careers': 'Carrières',
+                'partners': 'Partenaires',
+                'rights-reserved': 'Tous droits réservés.'
+            },
+            en: {
+                'hero-title': 'Artificial Intelligence for African Development',
+                'hero-subtitle': 'Concrete solutions for health, education, security and business',
+                'demo-btn': 'See demo',
+                'contact-btn': 'Contact us',
+                'mission-title': 'Our Mission',
+                'mission-subtitle': 'Transforming data into life-saving actions',
+                'mission-problem': 'Every day, lives are lost due to lack of good decisions',
+                'mission-solution': 'We transform data into life-saving actions through artificial intelligence and data science adapted to African challenges.',
+                'stat-1': 'Reduction in maternal mortality',
+                'stat-2': 'School retention',
+                'stat-3': 'Administrative efficiency',
+                'solutions-title': 'Sectoral Solutions',
+                'solutions-subtitle': 'Customized solutions to address Africa\'s specific challenges',
+                'health-title': 'Smart Health',
+                'health-challenge': 'Medication stock shortages',
+                'health-solution': 'SMS-Life: stock prediction and supply optimization',
+                'health-result': 'No more shortages in pilot districts',
+                'security-title': 'Predictive Security',
+                'security-challenge': 'Difficulty anticipating crises',
+                'security-solution': 'Sentinel CEMAC: predictive analysis of security risks',
+                'security-result': '45% reduction in incidents in covered areas',
+                'education-title': 'Adaptive Education',
+                'education-challenge': 'Massive school dropout',
+                'education-solution': 'EduPredict: early identification of struggling students',
+                'education-result': '+15% school retention in pilot institutions',
+                'gov-title': 'Administration 4.0',
+                'gov-challenge': 'Slow public services',
+                'gov-solution': 'GovFlow: optimization of administrative processes',
+                'gov-result': '40% more administrative efficiency',
+                'business-title': 'High-Performance Businesses',
+                'business-challenge': 'Lack of optimization tools',
+                'business-solution': 'Data-Mine & Agro: solutions for mining and agricultural sectors',
+                'business-result': '25% productivity increase',
+                'platform-title': 'CentrAI Platform',
+                'platform-subtitle': 'Unified interface to access all our AI modules',
+                'demo-title': 'CentrAI Dashboard',
+                'try-demo': 'Try the demo',
+                'health-stats': 'Health',
+                'stock-availability': 'Medication availability',
+                'security-stats': 'Security',
+                'alerts-today': 'Alerts today',
+                'education-stats': 'Education',
+                'students-monitored': 'Students monitored',
+                'gov-stats': 'Administration',
+                'process-optimized': 'Processes optimized',
+                'impact-title': 'Impact & Results',
+                'impact-subtitle': 'Concrete results that transform lives',
+                'lives-saved': 'Lives saved this month',
+                'testimonial-1': '"Thanks to SMS-Life, we anticipate medication shortages and save lives. A revolution for our healthcare system."',
+                'testimonial-1-author': 'Hospital Director, CAR',
+                'testimonial-2': '"EduPredict helps me identify struggling students before it\'s too late. We\'ve reduced dropout by 18%."',
+                'testimonial-2-author': 'Teacher, CAR',
+                'testimonial-3': '"Sentinel CEMAC allowed us to prevent 3 major crises this year. Data at the service of peace."',
+                'testimonial-3-author': 'Security Manager, CEMAC',
+                'calculator-title': 'Impact Calculator',
+                'calculator-subtitle': 'Discover what DATAMIND can do for your organization',
+                'org-type': 'I am',
+                'org-health': 'Ministry of Health',
+                'org-education': 'Ministry of Education',
+                'org-security': 'Security Agency',
+                'org-gov': 'Public Administration',
+                'org-business': 'Business',
+                'org-scale': 'Operation scale',
+                'calculate-btn': 'Calculate impact',
+                'potential-impact': 'Potential impact',
+                'contact-title': 'Contact us',
+                'contact-subtitle': 'Ready to transform your challenges into opportunities?',
+                'get-in-touch': 'Get in touch with our team',
+                'contact-desc': 'Our team of experts is available to discuss your specific needs and present our customized solutions.',
+                'location': 'Bangui, Central African Republic',
+                'name-placeholder': 'Your name',
+                'email-placeholder': 'Your email',
+                'interest-default': 'Your area of interest',
+                'interest-health': 'Smart Health',
+                'interest-security': 'Predictive Security',
+                'interest-education': 'Adaptive Education',
+                'interest-gov': 'Administration 4.0',
+                'interest-business': 'High-Performance Businesses',
+                'message-placeholder': 'Your message',
+                'send-message': 'Send message',
+                'footer-desc': 'Artificial intelligence for African development.',
+                'resources-title': 'Resources',
+                'resources-case': 'Case studies',
+                'resources-blog': 'Blog',
+                'resources-docs': 'Documentation',
+                'resources-news': 'News',
+                'contact-us': 'Contact us',
+                'careers': 'Careers',
+                'partners': 'Partners',
+                'rights-reserved': 'All rights reserved.'
+            },
+            ar: {
+                'hero-title': 'الذكاء الاصطناعي في خدمة التنمية الأفريقية',
+                'hero-subtitle': 'حلول ملموسة للصحة والتعليم والأمن والأعمال',
+                'demo-btn': 'عرض التجربة',
+                'contact-btn': 'اتصل بنا',
+                'mission-title': 'مهمتنا',
+                'mission-subtitle': 'تحويل البيانات إلى إجراءات تنقذ الأرواح',
+                'mission-problem': 'كل يوم، تُفقد أرواح بسبب عدم اتخاذ القرارات الصحيحة',
+                'mission-solution': 'نحول البيانات إلى إجراءات تنقذ الأرواح من خلال الذكاء الاصطناعي وعلوم البيانات المكيفة مع تحديات أفريقيا.',
+                'stat-1': 'انخفاض في وفيات الأمهات',
+                'stat-2': 'الاحتفاظ بالمدارس',
+                'stat-3': 'الكفاءة الإدارية',
+                'solutions-title': 'الحلول القطاعية',
+                'solutions-subtitle': 'حلول مخصصة لمعالجة التحديات المحددة لأفريقيا',
+                'health-title': 'الصحة الذكية',
+                'health-challenge': 'نقص مخزون الأدوية',
+                'health-solution': 'SMS-Vie: التنبؤ بالمخزون وتحسين التوريد',
+                'health-result': 'لا مزيد من النقص في المناطق التجريبية',
+                'security-title': 'الأمن التنبؤي',
+                'security-challenge': 'صعوبة توقع الأزمات',
+                'security-solution': 'Sentinel CEMAC: التحليل التنبؤي للمخاطر الأمنية',
+                'security-result': 'انخفاض بنسبة 45٪ في الحوادث في المناطق المغطاة',
+                'education-title': 'التعليم التكيفي',
+                'education-challenge': 'التسرب المدرسي الهائل',
+                'education-solution': 'EduPredict: التعرف المبكر على الطلاب المتعثرين',
+                'education-result': '+15٪ الاحتفاظ بالمدارس في المؤسسات التجريبية',
+                'gov-title': 'الإدارة 4.0',
+                'gov-challenge': 'بطء الخدمات العامة',
+                'gov-solution': 'GovFlow: تحسين العمليات الإدارية',
+                'gov-result': '40٪ زيادة في الكفاءة الإدارية',
+                'business-title': 'الشركات عالية الأداء',
+                'business-challenge': 'نقص أدوات التحسين',
+                'business-solution': 'Data-Mine & Agro: حلول لقطاعي التعدين والزراعة',
+                'business-result': 'زيادة الإنتاجية بنسبة 25٪',
+                'platform-title': 'منصة CentrAI',
+                'platform-subtitle': 'واجهة موحدة للوصول إلى جميع وحدات الذكاء الاصطناعي الخاصة بنا',
+                'demo-title': 'لوحة تحكم CentrAI',
+                'try-demo': 'جرب التجربة',
+                'health-stats': 'الصحة',
+                'stock-availability': 'توفر الأدوية',
+                'security-stats': 'الأمن',
+                'alerts-today': 'التنبيهات اليوم',
+                'education-stats': 'التعليم',
+                'students-monitored': 'الطلاب تحت المراقبة',
+                'gov-stats': 'الإدارة',
+                'process-optimized': 'العمليات المحسنة',
+                'impact-title': 'التأثير والنتائج',
+                'impact-subtitle': 'نتائج ملموسة تحول حياة الناس',
+                'lives-saved': 'الأرواح المنقذة هذا الشهر',
+                'testimonial-1': '"بفضل SMS-Vie، نتوقع نقص الأدوية وننقذ الأرواح. ثورة لنظامنا الصحي."',
+                'testimonial-1-author': 'مدير مستشفى، جمهورية أفريقيا الوسطى',
+                'testimonial-2': '"يساعدني EduPredict في تحديد الطلاب المتعثرين قبل فوات الأوان. لقد خفضنا التسرب بنسبة 18٪."',
+                'testimonial-2-author': 'معلم، جمهورية أفريقيا الوسطى',
+                'testimonial-3': '"سمح لنا Sentinel CEMAC بمنع 3 أزمات كبرى هذا العام. البيانات في خدمة السلام."',
+                'testimonial-3-author': 'مدير الأمن، CEMAC',
+                'calculator-title': 'حاسبة التأثير',
+                'calculator-subtitle': 'اكتشف ما يمكن أن يفعله DATAMIND لمنظمتك',
+                'org-type': 'أنا',
+                'org-health': 'وزارة الصحة',
+                'org-education': 'وزارة التعليم',
+                'org-security': 'وكالة أمنية',
+                'org-gov': 'الإدارة العامة',
+                'org-business': 'شركة',
+                'org-scale': 'نطاق العملية',
+                'calculate-btn': 'حساب التأثير',
+                'potential-impact': 'التأثير المحتمل',
+                'contact-title': 'اتصل بنا',
+                'contact-subtitle': 'مستعد لتحويل تحدياتك إلى فرص؟',
+                'get-in-touch': 'تواصل مع فريقنا',
+                'contact-desc': 'فريق الخبراء لدينا متاح لمناقشة احتياجاتك المحددة وعرض حلولنا المخصصة.',
+                'location': 'بانغي، جمهورية أفريقيا الوسطى',
+                'name-placeholder': 'اسمك',
+                'email-placeholder': 'بريدك الإلكتروني',
+                'interest-default': 'مجال اهتمامك',
+                'interest-health': 'الصحة الذكية',
+                'interest-security': 'الأمن التنبؤي',
+                'interest-education': 'التعليم التكيفي',
+                'interest-gov': 'الإدارة 4.0',
+                'interest-business': 'الشركات عالية الأداء',
+                'message-placeholder': 'رسالتك',
+                'send-message': 'إرسال الرسالة',
+                'footer-desc': 'الذكاء الاصطناعي في خدمة التنمية الأفريقية.',
+                'resources-title': 'الموارد',
+                'resources-case': 'دراسات الحالة',
+                'resources-blog': 'المدونة',
+                'resources-docs': 'الوثائق',
+                'resources-news': 'الأخبار',
+                'contact-us': 'اتصل بنا',
+                'careers': 'الوظائف',
+                'partners': 'الشركاء',
+                'rights-reserved': 'جميع الحقوق محفوظة.'
+            }
+        };
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Mettre à jour les boutons actifs
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Changer la langue
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                
+                // Changer la direction pour l'arabe
+                if (lang === 'ar') {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                } else {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = lang;
+                }
+            });
+        });
+        
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-lang-key]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (langData[lang] && langData[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = langData[lang][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = langData[lang][key];
+                    } else {
+                        element.textContent = langData[lang][key];
+                    }
+                }
+            });
+        }
+        
+        // Animation du compteur de vies sauvées
+        function animateCounter() {
+            const counter = document.getElementById('livesCounter');
+            let count = 0;
+            const target = 27;
+            const duration = 2000; // 2 secondes
+            const increment = target / (duration / 16); // 60fps
+            
+            function updateCounter() {
+                count += increment;
+                if (count < target) {
+                    counter.textContent = Math.floor(count);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+            
+            updateCounter();
+        }
+        
+        // Initialiser l'animation du compteur lorsque la section devient visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.getElementById('impact'));
+        
+        // Calculateur d'impact
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const orgType = document.getElementById('organization-type').value;
+            const scale = document.getElementById('scale').value;
+            let result = '';
+            
+            if (orgType === 'health') {
+                result = `Économie potentielle : ${scale * 9000} €/an | ${scale * 24} vies sauvées`;
+            } else if (orgType === 'education') {
+                result = `Économie potentielle : ${scale * 5000} €/an | ${scale * 15} élèves retenus`;
+            } else if (orgType === 'security') {
+                result = `Économie potentielle : ${scale * 12000} €/an | ${scale * 8} incidents évités`;
+            } else if (orgType === 'gov') {
+                result = `Économie potentielle : ${scale * 7000} €/an | ${scale * 40}% d'efficacité en plus`;
+            } else if (orgType === 'business') {
+                result = `Économie potentielle : ${scale * 15000} €/an | ${scale * 25}% de productivité en plus`;
+            }
+            
+            document.getElementById('impactResult').textContent = result;
+            document.getElementById('calculatorResult').style.display = 'block';
+        });
+        
+        // Mise à jour de l'affichage de l'échelle
+        document.getElementById('scale').addEventListener('input', function() {
+            const orgType = document.getElementById('organization-type').value;
+            let unit = '';
+            
+            if (orgType === 'health') {
+                unit = ' districts sanitaires';
+            } else if (orgType === 'education') {
+                unit = ' établissements';
+            } else if (orgType === 'security') {
+                unit = ' zones';
+            } else if (orgType === 'gov') {
+                unit = ' services';
+            } else if (orgType === 'business') {
+                unit = ' sites';
+            }
+            
+            document.getElementById('scale-value').textContent = this.value + unit;
+        });
+        
+        // Initialiser l'affichage de l'échelle
+        document.getElementById('organization-type').addEventListener('change', function() {
+            document.getElementById('scale').dispatchEvent(new Event('input'));
+        });
+        
+        // Initialiser au chargement
+        document.getElementById('scale').dispatchEvent(new Event('input'));
+        
+        // Gestion du formulaire de contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
